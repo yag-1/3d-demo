@@ -1,11 +1,10 @@
 import { useGLTF } from "@react-three/drei";
+import Model from "./model";
 
-const Chair = () => {
-  const { scene } = useGLTF("/assets/chair/chair.glb");
+const CHAIR_PATH = "/assets/chairs/chair_alt.glb";
 
-  return <primitive object={scene} />;
-};
+const Chair = () => <Model path={CHAIR_PATH} />;
 
-useGLTF.preload("/assets/chair/chair.glb");
+useGLTF.preload(CHAIR_PATH);
 
 export default Chair;

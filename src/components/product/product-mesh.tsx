@@ -10,6 +10,7 @@ const ProductMesh = ({
   onHoverMove,
   children,
   position,
+  scale = 1,
 }: ProductMeshProps) => {
   const product = products[productId];
   const groupRef = useRef<Mesh>(null);
@@ -17,7 +18,7 @@ const ProductMesh = ({
 
   useFrame(() => {
     if (!groupRef.current) return;
-    const targetScale = hovered ? 1.08 : 1;
+    const targetScale = hovered ? scale * 1.0085 : scale;
     groupRef.current.scale.lerp(
       { x: targetScale, y: targetScale, z: targetScale },
       0.15,
@@ -28,6 +29,7 @@ const ProductMesh = ({
     <group
       ref={groupRef}
       position={position}
+      scale={scale}
       castShadow
       onPointerEnter={(e) => {
         e.stopPropagation();

@@ -16,4 +16,5 @@ export interface ProductMeshProps {
   onHoverMove?: (event: ThreeEvent<PointerEvent>) => void;
   children: React.ReactNode;
   position?: [number, number, number];
+  scale?: number;
 }
