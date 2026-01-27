@@ -52,20 +52,7 @@ function ScrollContent() {
         </p>
       </section>
 
-      <section
-        style={{
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "white",
-          textAlign: "center",
-          padding: "0 2rem",
-        }}
-      >
-        <h2 style={{ fontSize: "2rem", fontWeight: 600 }}>Keep scrolling...</h2>
-      </section>
+      
     </Scroll>
   );
 }

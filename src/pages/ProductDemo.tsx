@@ -8,7 +8,7 @@ import { POPUP_X_GAP, POPUP_Y_GAP } from "../constants/constants";
 import ConnectorLine from "../components/connector-line/connector-line";
 import Chair from "../components/models/chair";
 import Desk from "../components/models/desk";
-import Carpet from "../components/models/carpet";
+// import Carpet from "../components/models/carpet";
 import DecorativeJar from "../components/models/decorative-jar";
 
 export default function ProductDemo() {
@@ -60,7 +60,7 @@ export default function ProductDemo() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <h1>3D - Demo</h1>
+      <h1>Product Display Demo</h1>
       <div
         ref={containerRef}
         style={{
@@ -74,34 +74,55 @@ export default function ProductDemo() {
           shadows
           dpr={[1, 2]}
           camera={{ position: [4, 3, 4], fov: 50 }}
-          gl={{ antialias: true }}
+          gl={{ antialias: true, toneMapping: 3 }}
         >
-          <Environment preset="apartment" background={false} />
-          <ambientLight intensity={0.5} />
+          <Environment preset="studio" background={false} environmentIntensity={0.5} />
+          <ambientLight intensity={0.3} />
           <directionalLight
-            position={[5, 10, 5]}
-            intensity={1.5}
+            position={[5, 8, 3]}
+            intensity={2}
             castShadow
-            shadow-mapSize={[2048, 2048]}
-            shadow-camera-far={50}
-            shadow-camera-left={-10}
-            shadow-camera-right={10}
-            shadow-camera-top={10}
-            shadow-camera-bottom={-10}
-            shadow-bias={-0.0001}
+            shadow-mapSize={[4096, 4096]}
+            shadow-camera-far={20}
+            shadow-camera-left={-5}
+            shadow-camera-right={5}
+            shadow-camera-top={5}
+            shadow-camera-bottom={-5}
+            shadow-bias={-0.0002}
           />
 
           <ContactShadows
-            position={[0, 2, 0]}
-            opacity={0.4}
-            scale={10}
-            blur={2}
-            far={4}
+            position={[0, -0.049, 0]}
+            opacity={0.6}
+            scale={8}
+            blur={1.5}
+            far={3}
+            resolution={1024}
           />
 
           <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
             <planeGeometry args={[100, 100]} />
-            <meshStandardMaterial color="#709dff" />
+            <meshStandardMaterial color="#8d4604" />
+          </mesh>
+
+          <mesh position={[-3, 2, 0]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
+            <planeGeometry args={[12, 5]} />
+            <meshStandardMaterial color="#1b323b" />
+          </mesh>
+
+          <mesh position={[0, 2, -3]} rotation={[0, 0, 0]} receiveShadow>
+            <planeGeometry args={[12, 5]} />
+            <meshStandardMaterial color="#1b323b" />
+          </mesh>
+
+           <mesh position={[0, 2, 6]} rotation={[0, Math.PI, 0]} receiveShadow>
+            <planeGeometry args={[12, 5]} />
+            <meshStandardMaterial color="#1b323b" />
+          </mesh>
+
+          <mesh position={[3, 2, 3]} rotation={[0, -Math.PI/2, 0]} receiveShadow>
+            <planeGeometry args={[12, 5]} />
+            <meshStandardMaterial color="#1b323b" />
           </mesh>
 
           <ProductMesh
@@ -122,7 +143,7 @@ export default function ProductDemo() {
             <DecorativeJar />
           </ProductMesh>
 
-          <ProductMesh
+          {/* <ProductMesh
             productId="carpet-1"
             onHover={handleHoverStart}
             onHoverMove={handleHoverMove}
@@ -130,7 +151,7 @@ export default function ProductDemo() {
             scale={1.1}
           >
             <Carpet />
-          </ProductMesh>
+          </ProductMesh> */}
 
           {chairPositions.map((chair, index) => (
             <ProductMesh
